@@ -28,7 +28,8 @@ A **Quran and Hadith Viewer** built with **HTML**, **CSS**, and **JavaScript**. 
 ---
 
 ## Screenshot
-![Quran and Hadith Viewer]([insert-link-or-path-here](https://github.com/Ahm3d0x/A-Quran-and-Hadith-Viewer-built-with-HTML-CSS-and-JavaScript./blob/main/image.png))
+![Quran and Hadith Viewer](https://github.com/Ahm3d0x/A-Quran-and-Hadith-Viewer-built-with-HTML-CSS-and-JavaScript./blob/main/image.png?raw=true)
+
 
 ---
 
