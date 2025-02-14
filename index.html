@@ -32,11 +32,31 @@ body {
 }
 
 /* Light Mode */
+/* body.light-mode  {
+  background-color: #F0F0F0; Light gray
+  color: #000;
+} */
 body.light-mode {
-  background-color: #F0F0F0; /* Light gray */
+  background-color: #F0F0F0;
   color: #000;
 }
 
+body.light-mode .delet {
+  background: #D9D9D9;
+  color: #000;
+}
+
+/* Quran Sections */
+.swar {
+  background-color: #4A4B56;
+  color: snow;
+}
+
+body.light-mode .swar {
+  background-color: #FFFFFF;
+  color: #000;
+}
+    
 /* Header */
 h1 {
   display: flex;
@@ -101,10 +121,12 @@ body.light-mode .allbtn button {
 
 /* Quran Sections */
 .swar {
-  background-color: #4A4B56;
+  background-color: #ffffff;
   margin-top: 15px;
   font-size: 25px;
   border-radius: 10px;
+  color: #000;
+  
   padding: 10px;
   display: none;
 }
@@ -619,6 +641,9 @@ body.light-mode .swar {
     let z114 = document.querySelector('.z114')
     let backtoo = document.querySelector('.backtoo')
     let button = document.querySelector('button')
+    let swar = document.querySelector('.swar')
+    
+    
     let ad = 'ملحوظه : اخر سوره تم القراءه بها '
     // let mod = 'light'
     let h = localStorage.host
@@ -631,11 +656,21 @@ body.light-mode .swar {
       window.location.reload();
     }
 
-let mod = "dark"; // Default Mode
+// Check if the user has a saved preference in localStorage
+let mod = localStorage.getItem("theme") || "dark"; 
+
+// Apply the saved theme on page load
+document.addEventListener("DOMContentLoaded", () => {
+  if (mod === "light") {
+    document.body.classList.add("light-mode");
+    document.querySelector(".delet").innerHTML = "الوضع الليلي";
+  }
+});
 
 function dlt() {
   const body = document.body;
   const delet = document.querySelector(".delet");
+  const swar = document.querySelector(".swar"); // Select swar properly
 
   if (mod === "light") {
     // Switch to Dark Mode
@@ -648,6 +683,9 @@ function dlt() {
     delet.innerHTML = "الوضع الليلي";
     mod = "light";
   }
+
+  // Save the user preference
+  localStorage.setItem("theme", mod);
 }
 
     
