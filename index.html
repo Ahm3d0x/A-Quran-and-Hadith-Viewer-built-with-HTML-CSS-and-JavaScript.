@@ -18,6 +18,20 @@
   margin: 0;
   box-sizing: border-box;
 }
+.start{
+  font-size: 25px;
+  display: flex;
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+  color: #00ff9d;
+  font-weight: bolder;
+}
+.name{
+
+  margin-top: 10px;
+  padding: 10px;
+}
 
 /* Dark Mode (Default) */
 body {
@@ -42,14 +56,21 @@ body.light-mode {
 }
 
 body.light-mode .delet {
-  background: #D9D9D9;
-  color: #000;
+  background: #000;
+  color: #fff;
 }
 
 /* Quran Sections */
+
 .swar {
   background-color: #000;
-  color: snow;
+  margin-top: 15px;
+  font-size: 25px;
+  border-radius: 10px;
+  color: #fff;
+  
+  padding: 10px;
+  display: none;
 }
 
 body.light-mode .swar {
@@ -120,20 +141,33 @@ body.light-mode .allbtn button {
 }
 
 /* Quran Sections */
-.swar {
-  background-color: #ffffff;
-  margin-top: 15px;
-  font-size: 25px;
-  border-radius: 10px;
-  color: #000;
-  
-  padding: 10px;
-  display: none;
-}
+
 
 body.light-mode .swar {
   background-color: #D9D9D9;
   color: #000;
+}
+.info{
+  display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+span{
+  margin: 5px;
+}
+.backtoo{
+  width: 330PX;
+  margin-top: 10px;
+  padding: 10px;
+  background: #5784A7;
+  font-weight: bolder;
+  font-size: 25px;
+  border-radius: 10px;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  color: snow;
 }
 
   </style>
@@ -144,9 +178,12 @@ body.light-mode .swar {
   <button class="delet" ondblclick="dlt()" type="submit">إلغاء الوضع اليلي</button>
 
   <h1>القرأن الكريم</h1>
-  <span></span>
+  <div class="info">
+    <span></span>
+    
+  
   <button class="backtoo" onclick=" document.location='ahdes.html'" type="submit">احاديث نبويه</button>
-
+  </div>
   <div class="allbtn">
     <button onclick="a1(this.id)" id="الفاتحه" class="b1" type="submit">الفاتحه</button>
     <button onclick="a2(this.id)" id=" البقرة" class="b2" type="submit">البقرة</button>
@@ -515,8 +552,6 @@ body.light-mode .swar {
     let body = document.querySelector('body')
     let allbtn = document.querySelector('.allbtn')
     let allbtns = document.querySelector('.allbtn.button')
-
-    let swar = document.querySelector('.swar')
     let name = document.querySelector('.name')
     let start = document.querySelector('.start')
     let p = document.querySelector('p')
@@ -657,7 +692,7 @@ body.light-mode .swar {
     }
 
 // Check if the user has a saved preference in localStorage
-let mod = localStorage.getItem("theme") || "dark"; 
+let mod = localStorage.getItem("theme") || "light"; 
 
 // Apply the saved theme on page load
 document.addEventListener("DOMContentLoaded", () => {
