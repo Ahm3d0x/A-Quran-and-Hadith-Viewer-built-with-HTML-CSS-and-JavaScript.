@@ -12,136 +12,108 @@
   <!-- Custom Styles -->
 
   <style>
-    * {
-      padding: 0px;
-      margin: 0px;
-    }
+   /* General Reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
+/* Dark Mode (Default) */
+body {
+  background-color: #1D1D1F;
+  color: snow;
+  width: 100%;
+  margin: auto;
+  direction: rtl;
+  height: 100%;
+  overflow: auto;
+  transition: background 0.3s ease, color 0.3s ease;
+}
 
+/* Light Mode */
+body.light-mode {
+  background-color: #F0F0F0; /* Light gray */
+  color: #000;
+}
 
+/* Header */
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  font-weight: bolder;
+  font-size: 40px;
+}
 
-    body {
-      background-color: #1D1D1F;
-      color: snow;
-      width: 100%;
-      margin: auto;
-      direction: rtl;
-      height: 100%;
-      overflow: auto;
-    }
+/* Buttons */
+.back, .delet {
+  position: fixed;
+  top: 10px;
+  font-size: 20px;
+  background: #000;
+  border: none;
+  outline: none;
+  color: snow;
+  border-radius: 10px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
 
-    h1 {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      margin-top: 35px;
-      font-weight: bolder;
-      font-size: 40px;
+.back {
+  left: 10px;
+  width: 80px;
+  display: none;
+}
 
-    }
+.delet {
+  right: 10px;
+  width: 130px;
+}
 
-    .back {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      width: 80px;
-      font-size: 20px;
-      background: #000000;
-      border: none;
-      outline: none;
-      color: snow;
-      border-radius: 10px;
-      display: none;
-    }
+/* Light Mode Button */
+body.light-mode .back, 
+body.light-mode .delet {
+  background: #D9D9D9;
+  color: #000;
+}
 
-    .delet {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      width: 130px;
-      font-size: 20px;
-      background: #000000;
-      border: none;
-      outline: none;
-      color: snow;
-      border-radius: 10px;
+/* Interactive Buttons */
+.allbtn button {
+  width: 90%;
+  height: 45px;
+  border: none;
+  margin-top: 10px;
+  background: #5784A7;
+  font-weight: bolder;
+  font-size: 25px;
+  border-radius: 10px;
+  transition: background 0.3s ease, color 0.3s ease;
+  margin-right: 5%;
+  cursor: pointer;
+}
 
-    }
+body.light-mode .allbtn button {
+  background: #6CA0DC; /* Light mode button */
+  color: #000;
+}
 
-    .backtoo {
-      position: relative;
-      width: 48%;
-      height: 50px;
-      border: none;
-      outline: none;
-      background: #414141;
-      color: #FFFFFF;
-      font-weight: bolder;
-      font-size: 28px;
-      border-radius: 10px;
-      transition-duration: .3s;
-      margin-right: 30%;
-      margin-bottom: 10px;
-    }
+/* Quran Sections */
+.swar {
+  background-color: #4A4B56;
+  margin-top: 15px;
+  font-size: 25px;
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+}
 
+body.light-mode .swar {
+  background-color: #D9D9D9;
+  color: #000;
+}
 
-    span {
-
-      position: relative;
-      display: flex;
-      justify-content: center;
-      margin-top: 5px;
-      font-weight: bolder;
-      margin-bottom: 10px;
-
-    }
-
-    .allbtn {
-      margin-top: 5px;
-      position: relative;
-      transform: translateX(-50%);
-      right: -50%;
-      display: block;
-      color: black;
-
-    }
-
-    .allbtn button {
-      position: relative;
-      width: 90%;
-      height: 45px;
-      border: none;
-      outline: none;
-      margin-top: 10px;
-      background: #5784A7;
-      font-weight: bolder;
-      font-size: 25px;
-      border-radius: 10px;
-      transition-duration: .3s;
-      margin-right: 5%;
-    }
-
-    .swar {
-      background-color: #4A4B56;
-      margin-top: 15px;
-      font-size: 25px;
-      border-radius: 10px;
-      padding: 10px;
-      display: none;
-
-    }
-
-    .start {
-      width: 100%;
-      display: none;
-
-    }
-
-    .start p {
-      font-weight: bolder;
-      font-size: 30px;
-      text-align: center;
-    }
   </style>
 </head>
 
@@ -648,7 +620,7 @@
     let backtoo = document.querySelector('.backtoo')
     let button = document.querySelector('button')
     let ad = 'ملحوظه : اخر سوره تم القراءه بها '
-    let mod = 'light'
+    // let mod = 'light'
     let h = localStorage.host
     if (localStorage.host == null) {
       h = 'انت لم تقرا بعد'
@@ -659,23 +631,25 @@
       window.location.reload();
     }
 
-    function dlt() {
-      if (mod == 'light') {
-        body.style.backgroundColor = '#D9D9D9'
-        body.style.color = '#000000';
-        span.style.color = 'red'
-        delet.innerHTML = 'الوضع اليلي'
-        mod = 'dark'
-      } else {
-        body.style.backgroundColor = '#1D1D1F'
-        body.style.color = 'snow';
-        span.style.color = 'snow'
-        delet.innerHTML = 'إلغاء الوضع اليلي'
-        mod = 'light'
-      }
+let mod = "dark"; // Default Mode
 
-   
-    }
+function dlt() {
+  const body = document.body;
+  const delet = document.querySelector(".delet");
+
+  if (mod === "light") {
+    // Switch to Dark Mode
+    body.classList.remove("light-mode");
+    delet.innerHTML = "إلغاء الوضع الليلي";
+    mod = "dark";
+  } else {
+    // Switch to Light Mode
+    body.classList.add("light-mode");
+    delet.innerHTML = "الوضع الليلي";
+    mod = "light";
+  }
+}
+
     
        function xxzz(){}
     function a1(x) {
